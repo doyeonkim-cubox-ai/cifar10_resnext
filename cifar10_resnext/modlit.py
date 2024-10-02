@@ -17,6 +17,7 @@ class CIFAR10ResNeXt(L.LightningModule):
         return self.model(x)
 
     def configure_optimizers(self):
+        # lr function for resnext models
         def lr_fn(epochs):
             if epochs < 150:
                 return 1
@@ -25,6 +26,7 @@ class CIFAR10ResNeXt(L.LightningModule):
             else:
                 return 0.01
 
+        # lr function for wide resnet model
         def lr_fn2(epochs):
             if epochs < 60:
                 return 1
@@ -34,8 +36,12 @@ class CIFAR10ResNeXt(L.LightningModule):
                 return 0.6
             else:
                 return 0.4
+
+        # optimizer for resnext
         optimizer = torch.optim.SGD(self.model.parameters(), lr=1e-1, momentum=0.9, weight_decay=5e-4)
+        # optimizer for wide resnet
         optimizer2 = torch.optim.SGD(self.model.parameters(), lr=1e-1, nesterov=True, momentum=0.9, weight_decay=5e-4)
+        # lr scheduler for each models
         scheduler = {
             'scheduler': torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda=lr_fn),
             'name': 'learning_rate',
