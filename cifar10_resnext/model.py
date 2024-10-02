@@ -144,7 +144,7 @@ class ResNeXt(nn.Module):
 
 
 class WideResNet(nn.Module):
-    # Just for convenience use width as cardinality here
+    # Just for convenience use var cardinality as width expansion here
     def __init__(self, block, layers, cardinality=1, num_classes=10):
         super(WideResNet, self).__init__()
 
