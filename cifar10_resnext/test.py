@@ -10,7 +10,7 @@ import argparse
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-model', type=str, help='Pick Model(ex.resnet29 / resnext29)')
+    parser.add_argument('-model', type=str, help='Pick Model(ex.wresnet / resnext29)')
     m = parser.parse_args().model
 
     dm = CIFAR10DataModule(data_dir="./cifar10", batch_size=128)
