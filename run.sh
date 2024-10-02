@@ -21,6 +21,7 @@ date
 
 # ex) srun python -m mnist_resnet50.train
 
+# training
 cnt=0
 while [ 1 == 1 ]
 do
@@ -30,12 +31,18 @@ do
   echo "Start loop after 5sec"
   sleep 5
   srun python -m cifar10_resnext.train -model wresnet
-  srun python -m cifar10_resnext.test -model wresnet
   srun python -m cifar10_resnext.train -model resnext29_8
-  srun python -m cifar10_resnext.test -model resnext29_8
   srun python -m cifar10_resnext.train -model resnext29_16
-  srun python -m cifar10_resnext.test -model resnext29_16
   let cnt++
   echo "Sleep for 5sec"
   sleep 5
 done
+
+# testing
+#srun python -m cifar10_resnext.test -model wresnet
+#srun python -m cifar10_resnext.test -model resnext29_8
+#srun python -m cifar10_resnext.test -model resnext29_16
+
+
+
+
