@@ -22,15 +22,15 @@ python -m cifar10_resnext.train -model {모델}
 python -m cifar10_resnext.test -model {모델}
 ```
 
-##### 2. statistics (To Be Revised)
+##### 2. statistics
 | model              | # layers | # params | error(%) |
 |--------------------|:---------|----------|----------|
-| Wide ResNet(28-10) | 29       | 36.5M    | tbd      |
-| ResNeXt29(8x64d)   | 29       | 34.4M    | tbd      |
-| ResNeXt29(16x64d)  | 29       | 68.1M    | tbd      |
+| Wide ResNet(28-10) | 29       | 36.5M    | 7.65     |
+| ResNeXt29(8x64d)   | 29       | 34.4M    | 4.30     |
+| ResNeXt29(16x64d)  | 29       | 68.1M    | 4.05     |
 
 
-##### 3. plots (To Be Revised)
+##### 3. plots
 - testing error(wresnet & resnext29(8x64d) & resnext29(16x64d))
 
 <img src="./result/total.png" width="400" height="300">
