@@ -12,6 +12,7 @@ class CIFAR10ResNeXt(L.LightningModule):
         self.model = model.pick(m)
         self.loss_fn = nn.CrossEntropyLoss()
         self.acc = Accuracy(task='multiclass', num_classes=10)
+        self.lr_opt = m
 
     def forward(self, x):
         return self.model(x)
@@ -52,7 +53,7 @@ class CIFAR10ResNeXt(L.LightningModule):
             'name': 'learning_rate',
             'interval': 'epoch'
         }
-        if self.model == 'wresnet':
+        if self.lr_opt == 'wresnet':
             return {"optimizer": optimizer2, "lr_scheduler": scheduler2}
         else:
             return {"optimizer": optimizer, "lr_scheduler": scheduler}
