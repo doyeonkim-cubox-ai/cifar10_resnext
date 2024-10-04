@@ -23,8 +23,6 @@ def main():
     else:
         total_epochs = 300
 
-    print(f'getting model {m}, total_epochs: {total_epochs}')
-
     net = CIFAR10ResNeXt(m)
     # print(net)
     # summary(net.to('cuda'), (3, 32, 32))
