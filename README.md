@@ -35,7 +35,7 @@ python -m cifar10_resnext.inference -model {모델} -img {이미지 경로}
 ##### 3. plots
 - testing error(resnext29(8x64d) & resnext29(16x64d))
 
-<img src="./result/resnext.png" width="400" height="300">
+<img src="./result/resnext_test.png" width="400" height="300">
 
 - testing error(wresnet)
 
