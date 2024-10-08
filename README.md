@@ -20,20 +20,22 @@ pip install -r requirements.txt
 mkdir model
 python -m cifar10_resnext.train -model {모델}
 python -m cifar10_resnext.test -model {모델}
+# inference
+python -m cifar10_resnext.inference -model {모델} -img {이미지 경로}
 ```
 
 ##### 2. statistics
 | model              | # layers | # params | error(%) |
 |--------------------|:---------|----------|----------|
-| Wide ResNet(28-10) | 29       | 36.5M    | 7.65     |
+| Wide ResNet(28-10) | 29       | 36.5M    | 4.19     |
 | ResNeXt29(8x64d)   | 29       | 34.4M    | 4.30     |
 | ResNeXt29(16x64d)  | 29       | 68.1M    | 4.05     |
 
 
 ##### 3. plots
-- testing error(wresnet & resnext29(8x64d) & resnext29(16x64d))
+- testing error(resnext29(8x64d) & resnext29(16x64d))
 
-<img src="./result/total.png" width="400" height="300">
+<img src="./result/resnext.png" width="400" height="300">
 
 - testing error(wresnet)
 
