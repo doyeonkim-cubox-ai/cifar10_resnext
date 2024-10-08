@@ -6,6 +6,7 @@ from cifar10_resnext.modlit import CIFAR10ResNeXt
 from cifar10_resnext.data import CIFAR10DataModule
 from torchsummary import summary
 import lightning as L
+from lightning.pytorch import seed_everything
 import argparse
 
 
@@ -14,9 +15,10 @@ def main():
     parser.add_argument('-model', type=str, help='Pick Model(ex.wresnet / resnext29)')
     m = parser.parse_args().model
 
+    # Fix random seed for model reproducibility
+    seed_everything(123, workers=True)
+
     dm = CIFAR10DataModule(data_dir="./cifar10", batch_size=128)
-    dm.prepare_data()
-    dm.setup(stage="fit")
 
     if m == 'wresnet':
         total_epochs = 200
@@ -43,7 +45,8 @@ def main():
         callbacks=[cp_callback, lr_monitor],
         logger=wandb_logger,
         accelerator='cuda',
-        devices=1
+        devices=1,
+        deterministic=True
     )
     trainer.fit(net, dm)
 

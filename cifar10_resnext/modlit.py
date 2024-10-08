@@ -32,11 +32,11 @@ class CIFAR10ResNeXt(L.LightningModule):
             if epochs < 60:
                 return 1
             elif epochs < 120:
-                return 0.8
+                return 0.2
             elif epochs < 160:
-                return 0.6
+                return 0.04
             else:
-                return 0.4
+                return 0.008
 
         # optimizer for resnext
         optimizer = torch.optim.SGD(self.model.parameters(), lr=1e-1, momentum=0.9, weight_decay=5e-4)
