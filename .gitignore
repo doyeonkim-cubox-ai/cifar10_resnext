@@ -6,3 +6,4 @@ model
 **/wandb
 lightning_logs
 logs/
+*.png
